@@ -13,12 +13,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BlockBusterApp {
+public class BlockBusterSwing {
     private BlockBuster blockBuster = new BlockBuster();
     private JTextField codigoField, nombreField, tipoItemField, diasField;
     private JTextArea outputArea;
 
-    public BlockBusterApp() {
+    public BlockBusterSwing() {
         JFrame frame = new JFrame("BlockBuster App");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
@@ -114,7 +114,7 @@ public class BlockBusterApp {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new BlockBusterApp();
+                new BlockBusterSwing();
             }
         });
     }
