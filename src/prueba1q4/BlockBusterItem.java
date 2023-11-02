@@ -17,12 +17,22 @@ public abstract class BlockBusterItem {
     private String nombre;
     private double precio_renta;
     private Calendar fecha;
+    private String tipo;
 
-    public BlockBusterItem(int Código, String nombre, double precio_renta, Date fecha) {
+    public BlockBusterItem(int Código, String nombre, double precio_renta,String tipo) {
         this.codigo = Código;
         this.nombre = nombre;
         this.precio_renta = precio_renta;
         this.fecha = Calendar.getInstance();
+        this.tipo  = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public int getCódigo() {
@@ -49,7 +59,7 @@ public abstract class BlockBusterItem {
         this.precio_renta = precio_renta;
     }
 
-    public abstract double pagoRenta(int días);
+    public abstract double pagoRenta(int dias);
     
     @Override
     public String toString(){

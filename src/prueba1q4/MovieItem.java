@@ -14,22 +14,21 @@ import java.util.Date;
 public class MovieItem extends BlockBusterItem{
     String estado;
     Calendar fecha = Calendar.getInstance();
-
-    public MovieItem(String estado, int Código, String nombre, double precio_renta, Date fecha) {
-        super(Código, nombre, precio_renta, fecha);
+    
+    public MovieItem(String estado, int Código, String nombre, double precio_renta,String tipo) {
+        super(Código, nombre, precio_renta,tipo);
         this.estado = "ESTRENO";
     }
 
    
 
     @Override
-    public double pagoRenta(int días) {
-        long diferenciaDias = ((super.getFecha().getTimeInMillis() - fecha.getTimeInMillis()) / (24 * 60 * 60 * 1000));
-        if(diferenciaDias>2&&estado.equals("ESTRENO")){
-        return super.getPrecio_renta()+(50*(diferenciaDias-2));
+    public double pagoRenta(int dias) {
+        if(dias>2&&estado.equals("ESTRENO")){
+        return super.getPrecio_renta()+(50*(dias-2));
         }
-        if(diferenciaDias>5&&estado.equals("NORMAL")){
-        return super.getPrecio_renta()+(30*(diferenciaDias-5));
+        if(dias>5&&estado.equals("NORMAL")){
+        return super.getPrecio_renta()+(30*(dias-5));
         }
         return super.getPrecio_renta();
     }

@@ -34,10 +34,10 @@ class BlockBuster {
     public void agregarItem(int codigo, String nombre, String tipoItem) {
         if (buscarItem(codigo, tipoItem) == null) {
             if (tipoItem.equalsIgnoreCase("MOVIE")) {
-                movie = new MovieItem(codigo, nombre);
+                movie = new MovieItem(nombre, codigo, nombre, codigo, tipoItem);
                 items.add(movie);
             } else if (tipoItem.equalsIgnoreCase("GAME")) {
-                game = new VideoGameItem(codigo, nombre);
+                game = new VideoGameItem(nombre, codigo, nombre, codigo, tipoItem);
                 items.add(game);
             } else {
                 System.out.println("Tipo de ítem no válido.");
@@ -50,8 +50,8 @@ class BlockBuster {
     public void rentar(int codigo, String tipoItem, int dias) {
         BlockBusterItem item = buscarItem(codigo, tipoItem);
         if (item != null) {
-            item.mostrarInfo();
-            double monto = item.calcularMonto(dias);
+            item.toString();
+            double monto = item.pagoRenta(dias);
             System.out.println("Monto a pagar: " + monto);
         } else {
             System.out.println("Item No Existe");
