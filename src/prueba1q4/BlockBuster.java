@@ -12,13 +12,8 @@ import java.util.List;
  * @author aleja
  */
 public class BlockBuster {
-    public static List<Block> BlockBuster;
-    public static String buscarItem;
-    public static String agregarItem;
-        
-   
-    
-    
+    public static ArrayList<BlockBuster> BlockBuster;
+
 
     public BlockBuster() {
         BlockBuster = new ArrayList<>();
@@ -29,29 +24,48 @@ public class BlockBuster {
     public String buscarItem(int codigo, String tipo) {
         
         for (Object object : BlockBuster) {
-            if (BlockBuster =  "MOVIE" || BlockBuster =  "MOVIE") {
-                
-            } else {
+            if (object.getCodigo() == codigo && object.getTipo().equals(tipo)) {
+                return object;
             }
-            
         }
-       
-       
-         return null;
-    
+        return null;             
     }
     
-    public String agregarItem(int codigo, String nombre, String tipoItem){
-    
+        public void agregarItem(int codigo, String nombre, String tipoItem) {
+        if (buscarItem(codigo, tipoItem) == null) {
+            if (tipoItem.equalsIgnoreCase("MOVIE")) {
+                MovieItem movie = new MovieItem(codigo, nombre);
+                items.add(movie);
+            } else if (tipoItem.equalsIgnoreCase("GAME")) {
+                VideoGameItem game = new VideoGameItem(codigo, nombre);
+                items.add(game);
+            }
+        } else {
+            System.out.println("Ya existe un ítem con ese código y tipo.");
+        }
+    }
         
-        return null;
+        
+        public void rentar(int codigo, String tipoItem, int dias) {
+        Item item = buscarItem(codigo, tipoItem);
+        if (item != null) {
+            item.mostrarInfo();
+            double monto = item.calcularMonto(dias);
+            System.out.println("Monto a pagar: " + monto);
+        } else {
+            System.out.println("Item No Existe");
+        }
+    }
+
+    
+    public void auditarMovieEstados() {
+        for (Item item : items) {
+            if (item instanceof MovieItem) {
+                ((MovieItem) item).evaluarEstado();
+            }
+        }
     }
     
-    public String Rentar(int codigo, String tipoItem, int dias){
-        return null; 
     
-    }
-    
-    auditarMovieEstados().
     
 }
